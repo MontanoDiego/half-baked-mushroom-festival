@@ -1,5 +1,5 @@
 // import functions and grab DOM elements
-import { renderMushroom, renderFriend } from './render-utils.js';
+import { renderMushroom, renderFriend, renderMagicMushroom } from './render-utils.js';
 
 const friendsEl = document.querySelector('.friends');
 const friendInputEl = document.getElementById('friend-input');
@@ -11,7 +11,7 @@ const addFriendButton = document.getElementById('add-friend-button');
 // initialize state
 
 let mushroomCount = 3;
-let magicMushroomCount = 0;
+let magicMushroomCount = 1;
 
 const friendData = [
     {
@@ -38,7 +38,13 @@ addMushroomButton.addEventListener('click', () => {
 
         mushroomCount++;
         displayMushrooms();
-    } else {
+    } else if (Math.random() > 0.6) {
+        alert('found a magic mushroom!');
+
+        magicMushroomCount++;
+        displayMushrooms();
+    }
+    else {
         alert('no luck!');
     }
 });
@@ -91,6 +97,11 @@ function displayMushrooms() {
         // for each mushroom in your mushroom state, render and append a mushroom
         const mushroom = renderMushroom(i);
         mushroomsEl.append(mushroom);
+
+    }
+    for (let e = 0; e < magicMushroomCount; e++) {
+        const magicMushroom = renderMagicMushroom(e);
+        mushroomsEl.append(magicMushroom);
     }
 }
 
