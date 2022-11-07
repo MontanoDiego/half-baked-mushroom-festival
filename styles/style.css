@@ -213,6 +213,14 @@ footer {
     background-image: url('../assets/porcini.png');
 }
 
+.magicMushroom {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../assets/morel.png');
+}
+
 label {
     font-size: 2rem;
 }
