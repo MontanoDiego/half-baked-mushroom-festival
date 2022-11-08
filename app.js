@@ -6,11 +6,13 @@ const friendInputEl = document.getElementById('friend-input');
 const mushroomsEl = document.querySelector('.mushrooms');
 const addMushroomButton = document.getElementById('add-mushroom-button');
 const addFriendButton = document.getElementById('add-friend-button');
+const main = document.getElementById('main');
+const soberBtn = document.getElementById('sober');
 
 
 // initialize state
 
-let mushroomCount = 3;
+let mushroomCount = 1;
 let magicMushroomCount = 1;
 
 const friendData = [
@@ -65,6 +67,13 @@ addFriendButton.addEventListener('click', () => {
     displayFriends();
 });
 
+// sober up button
+soberBtn.addEventListener('click', () => {
+    main.classList.remove('main-two');
+    main.classList.add('main');
+    
+});
+
 function displayFriends() {
     // clear out the friends in DOM
     friendsEl.textContent = '';
@@ -81,6 +90,16 @@ function displayFriends() {
             if (friend.satisfaction < 3 && mushroomCount > 0) {
                 friend.satisfaction++;
                 mushroomCount--;
+                displayMushrooms();
+                displayFriends();
+            }
+        });
+        friendEl.addEventListener('dblclick', () => {
+            if (magicMushroomCount > 0) {
+                magicMushroomCount--;
+                friend.satisfaction = 3;
+                main.classList.remove('main');
+                main.classList.add('main-two');
                 displayMushrooms();
                 displayFriends();
             }
@@ -104,6 +123,7 @@ function displayMushrooms() {
         mushroomsEl.append(magicMushroom);
     }
 }
+
 
 displayFriends();
 displayMushrooms();

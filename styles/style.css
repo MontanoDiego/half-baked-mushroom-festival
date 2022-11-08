@@ -53,9 +53,22 @@ h2 {
     margin-right: 20px;
 }
 
-main {
+.main {
     height: 100%;
     background-image: url('../assets/background-2.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.main-two {
+    height: 100%;
+    background-image: url('../assets/background-trip.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
